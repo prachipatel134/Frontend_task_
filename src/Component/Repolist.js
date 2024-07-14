@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useCallback } from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchReposStart, setPage } from "../Redux/repoSlice";
 import RepoItem from "./RepoItem";
@@ -10,11 +10,10 @@ const RepoList = () => {
   const dispatch = useDispatch();
   const { reposdata, loading, error } = useSelector((state) => state.reposdata);
   const page = useSelector((state) => state.reposdata.page);
-  const loader = useRef(null);
 
   useEffect(() => {
     dispatch(fetchReposStart());
-  }, [page]);
+  }, [dispatch, page]);
 
   const loadMore = () => {
     dispatch(setPage(page + 1));
