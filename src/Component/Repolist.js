@@ -48,12 +48,9 @@ const RepoList = () => {
         </div>
       </div>
       <div>
-        {reposdata
-          ?.slice()
-          .reverse()
-          .map((repo) => (
-            <RepoItem key={repo.id} repo={repo} />
-          ))}
+        {reposdata.map((repo) => (
+          <RepoItem key={repo.id} repo={repo} />
+        ))}
       </div>
       {loading && (
         <div className="flex justify-center items-center py-4">
